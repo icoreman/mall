@@ -13,5 +13,5 @@
 	<dubbo:protocol name="dubbo" port="20881"/>
 	<dubbo:application name="mall-sellergoods-service" />
 	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
-	<dubbo:annotation package="com.xuxx.sellergoods.service.impl" />
+	<dubbo:annotation package="com.xuxx.mall.sellergoods.service.impl" />
 </beans>

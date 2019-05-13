@@ -1,13 +1,12 @@
 //服务层
-app.service('brandService',function($http){
-	    	
+app.service('brandService',function($http){	    	
 	//读取列表数据绑定到表单中
 	this.findAll=function(){
 		return $http.get('/brand/findAll');		
 	}
 	//分页 
-	this.findPage=function(page,size){
-		return $http.get('/brand/findPage?page='+page+'&size='+size);
+	this.findPage=function(page,rows){
+		return $http.get('/brand/findPage?page='+page+'&rows='+rows);
 	}
 	//查询实体
 	this.findOne=function(id){
@@ -26,12 +25,11 @@ app.service('brandService',function($http){
 		return $http.get('/brand/delete?ids='+ids);
 	}
 	//搜索
-	this.search=function(page,size,searchEntity){
-		return $http.post('/brand/search?page='+page+"&size="+size, searchEntity);
+	this.search=function(page,rows,searchEntity){
+		return $http.post('/brand/search?page='+page+"&rows="+rows, searchEntity);
 	}    
 	//下拉列表数据
 	this.selectOptionList=function(){
 		return $http.get('/brand/selectOptionList');
 	}
-	
 });

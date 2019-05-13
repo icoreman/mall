@@ -8,6 +8,15 @@
 	http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
 	<dubbo:application name="mall-manager-web" />
-	<dubbo:registry address="zookeeper://192.168.1.107:2181" />	
-	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.BrandService" id="brandService" check="false" timeout="1000"/>
+	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.BrandService"
+		id="brandService" check="false" timeout="1000" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.GoodsService"
+		id="goodsService" check="false" timeout="1000" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.SellerService"
+		id="sellerService" check="false" timeout="1000" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.SpecificationService"
+		id="specificationService" check="false" timeout="1000" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.TypeTemplateService"
+		id="typeTemplateService" check="false" timeout="1000" />
 </beans>

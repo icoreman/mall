@@ -1,4 +1,4 @@
-package com.xuxx.sellergoods.service.impl;
+package com.xuxx.mall.sellergoods.service.impl;
 
 import java.util.List;
 
