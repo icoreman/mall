@@ -1,7 +1,6 @@
 package com.xuxx.mall.manager.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,26 +9,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xuxx.entity.PageResult;
 import com.xuxx.entity.Result;
-import com.xuxx.mall.pojo.TbSpecification;
-import com.xuxx.mall.sellergoods.service.SpecificationService;
-import com.xuxx.mall.vo.SpecificationVO;
+import com.xuxx.mall.pojo.TbTypeTemplate;
+import com.xuxx.mall.sellergoods.service.TypeTemplateService;
 
 /**
  * 
- * @ClassName: SpecificationController
+ * @ClassName: TypeTemplateController
  *
  * @author xuxx
- * @date 2019-05-13 17:36:58
+ * @date 2019-05-13 21:08:41
  * @since JDK 1.8
  *
  */
-
 @RestController
-@RequestMapping("/specification")
-public class SpecificationController {
+@RequestMapping("/typeTemplate")
+public class TypeTemplateController {
 
 	@Autowired
-	private SpecificationService specificationService;
+	private TypeTemplateService typeTemplateService;
 
 	/**
 	 * 返回全部列表
@@ -37,8 +34,8 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/findAll")
-	public List<TbSpecification> findAll() {
-		return specificationService.findAll();
+	public List<TbTypeTemplate> findAll() {
+		return typeTemplateService.findAll();
 	}
 
 	/**
@@ -47,37 +44,37 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/findPage")
-	public PageResult<TbSpecification> findPage(int page, int rows) {
-		return specificationService.findPage(page, rows);
+	public PageResult<TbTypeTemplate> findPage(int page, int rows) {
+		return typeTemplateService.findPage(page, rows);
 	}
 
 	/**
 	 * 增加
 	 * 
-	 * @param specification
+	 * @param typeTemplate
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody SpecificationVO specification) {
+	public Result add(@RequestBody TbTypeTemplate typeTemplate) {
 		try {
-			specificationService.add(specification);
+			typeTemplateService.add(typeTemplate);
 			return Result.buildSuccessResult("增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return Result.buildFailResult( "增加失败");
+			return Result.buildFailResult("增加失败");
 		}
 	}
 
 	/**
 	 * 修改
 	 * 
-	 * @param specification
+	 * @param typeTemplate
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public Result update(@RequestBody SpecificationVO specification) {
+	public Result update(@RequestBody TbTypeTemplate typeTemplate) {
 		try {
-			specificationService.update(specification);
+			typeTemplateService.update(typeTemplate);
 			return Result.buildSuccessResult("修改成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,8 +89,8 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/findOne")
-	public SpecificationVO findOne(Long id) {
-		return specificationService.findOne(id);
+	public TbTypeTemplate findOne(Long id) {
+		return typeTemplateService.findOne(id);
 	}
 
 	/**
@@ -105,7 +102,7 @@ public class SpecificationController {
 	@RequestMapping("/delete")
 	public Result delete(Long[] ids) {
 		try {
-			specificationService.delete(ids);
+			typeTemplateService.delete(ids);
 			return Result.buildSuccessResult("删除成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,12 +119,7 @@ public class SpecificationController {
 	 * @return
 	 */
 	@RequestMapping("/search")
-	public PageResult<TbSpecification> search(@RequestBody TbSpecification specification, int page, int rows) {
-		return specificationService.findPage(specification, page, rows);
-	}
-
-	@RequestMapping("/selectOptionList")
-	public List<Map<String, String>> selectOptionList() {
-		return specificationService.selectOptionList();
+	public PageResult<TbTypeTemplate> search(@RequestBody TbTypeTemplate typeTemplate, int page, int rows) {
+		return typeTemplateService.findPage(typeTemplate, page, rows);
 	}
 }

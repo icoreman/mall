@@ -1,6 +1,8 @@
 package com.xuxx.mall.mapper;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.xuxx.mall.pojo.TbBrand;
@@ -28,4 +30,6 @@ public interface TbBrandMapper {
     int updateByPrimaryKeySelective(TbBrand record);
 
     int updateByPrimaryKey(TbBrand record);
+
+	List<Map<String, String>> selectOptionList();
 }

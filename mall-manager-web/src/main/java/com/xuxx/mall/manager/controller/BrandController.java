@@ -1,6 +1,7 @@
 package com.xuxx.mall.manager.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,10 +43,10 @@ public class BrandController {
 	public Result add(@RequestBody TbBrand brand) {
 		try {
 			brandService.add(brand);
-			return new Result(true, "增加成功");
+			return Result.buildSuccessResult("增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "增加失败");
+			return Result.buildFailResult("增加失败");
 		}
 	}
 
@@ -58,10 +59,10 @@ public class BrandController {
 	public Result update(@RequestBody TbBrand brand) {
 		try {
 			brandService.update(brand);
-			return new Result(true, "修改成功");
+			return Result.buildSuccessResult("修改成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "修改失败");
+			return Result.buildFailResult("修改失败");
 		}
 	}
 
@@ -69,15 +70,26 @@ public class BrandController {
 	public Result delete(Long[] ids) {
 		try {
 			brandService.delete(ids);
-			return new Result(true, "删除成功");
+			return Result.buildSuccessResult("删除成功");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Result(false, "删除失败");
+			return Result.buildFailResult("删除失败");
 		}
 	}
 
 	@RequestMapping("/search")
 	public PageResult<TbBrand> search(@RequestBody TbBrand brand, int page, int rows) {
 		return brandService.findPage(brand, page, rows);
+	}
+	
+	/**
+	 * 
+	 * @Title: selectOptionList 
+	 * @Description: 获取所有品牌，按照 select2 需要的格式，即{id:,text}
+	 * @return List<Map> 
+	 */
+	@RequestMapping("/selectOptionList")
+	public List<Map<String, String>> selectOptionList() {
+		return brandService.selectOptionList();
 	}
 }

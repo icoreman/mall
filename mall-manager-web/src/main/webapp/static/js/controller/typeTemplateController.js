@@ -1,6 +1,5 @@
  //控制层 
-app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemplateService,brandService,specificationService){	
-	
+app.controller('typeTemplateController' ,function($scope,$controller,typeTemplateService,brandService,specificationService){	
 	$controller('baseController',{$scope:$scope});//继承
 	
     //读取列表数据绑定到表单中  
@@ -29,7 +28,7 @@ app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemp
 				$scope.entity= response;		
 				
 				//转换字符串为json对象（集合）
-				$scope.entity.brandIds=  JSON.parse( $scope.entity.brandIds);
+				$scope.entity.brandIds=  JSON.parse($scope.entity.brandIds);
 				$scope.entity.specIds= JSON.parse($scope.entity.specIds);
 				$scope.entity.customAttributeItems = JSON.parse($scope.entity.customAttributeItems);
 				
@@ -57,7 +56,6 @@ app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemp
 		);				
 	}
 	
-	 
 	//批量删除 
 	$scope.dele=function(){			
 		//获取选中的复选框			
@@ -113,5 +111,4 @@ app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemp
 	$scope.deleTableRow=function(index){
 		$scope.entity.customAttributeItems.splice( index,1);
 	}
-	
 });	

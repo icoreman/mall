@@ -33,5 +33,4 @@ app.service('specificationService',function($http){
 	this.selectOptionList=function(){
 		return $http.get('/specification/selectOptionList');
 	}
-	
 });

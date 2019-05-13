@@ -1,6 +1,7 @@
 package com.xuxx.mall.sellergoods.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,4 +92,8 @@ public class BrandServiceImpl implements BrandService {
 		return new PageResult<TbBrand>(page.getTotal(), page.getResult());
 	}
 
+	@Override
+	public List<Map<String, String>> selectOptionList() {
+		return brandMapper.selectOptionList();
+	}
 }
