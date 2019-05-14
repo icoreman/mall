@@ -72,5 +72,4 @@ public interface SellerService {
 	 * @return void 
 	 */
 	public void updateStatus(String sellerId, String status);
-	
 }

@@ -20,4 +20,7 @@
 		interface="com.xuxx.mall.sellergoods.service.SpecificationService" />
 	<dubbo:reference id="typeTemplateService" check="false" timeout="1000"
 		interface="com.xuxx.mall.sellergoods.service.TypeTemplateService" />
+
+	<dubbo:reference id="itemCatService" check="false" timeout="1000"
+		interface="com.xuxx.mall.sellergoods.service.ItemCatService" />
 </beans>

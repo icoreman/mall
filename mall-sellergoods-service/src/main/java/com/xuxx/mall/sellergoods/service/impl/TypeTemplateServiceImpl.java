@@ -1,6 +1,7 @@
 package com.xuxx.mall.sellergoods.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,5 +110,10 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 
 		Page<TbTypeTemplate> page = (Page<TbTypeTemplate>) typeTemplateMapper.selectByExample(example);
 		return new PageResult<TbTypeTemplate>(page.getTotal(), page.getResult());
+	}
+
+	@Override
+	public List<Map<String, String>> selectOptionList() {
+		return typeTemplateMapper.selectOptionList();
 	}
 }

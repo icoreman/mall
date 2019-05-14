@@ -68,12 +68,11 @@ public interface SpecificationService {
 	/**
 	 * 
 	 * @Title: selectOptionList 
-	 * @Description: 获取所有规格选项
+	 * @Description: 获取所有规格，按照 select2 需要的格式，即{id:,text}
 	 * @param @return 
 	 * @return List<Map>    
 	 * @throws
 	 */
-	
 	public List<Map<String,String>> selectOptionList();
 	
 }

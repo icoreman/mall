@@ -1,5 +1,6 @@
 package com.xuxx.mall.sellergoods.service;
 import java.util.List;
+import java.util.Map;
 
 import com.xuxx.entity.PageResult;
 import com.xuxx.mall.pojo.TbTypeTemplate;
@@ -62,6 +63,13 @@ public interface TypeTemplateService {
 	 */
 	public PageResult<TbTypeTemplate> findPage(TbTypeTemplate typeTemplate, int pageNum,int pageSize);
 	
+	/**
+	 * 
+	 * @Title: selectOptionList 
+	 * @Description: 获取所有模板选项，按照 select2 需要的格式，即{id:,text} 
+	 * @return List<Map<String,String>> 
+	 */
+	public List<Map<String,String>> selectOptionList();
 
 	
 }

@@ -1,6 +1,8 @@
 package com.xuxx.mall.mapper;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.xuxx.mall.pojo.TbTypeTemplate;
@@ -28,4 +30,11 @@ public interface TbTypeTemplateMapper {
     int updateByPrimaryKeySelective(TbTypeTemplate record);
 
     int updateByPrimaryKey(TbTypeTemplate record);
+
+	/** 
+	 * @Title: selectOptionList 
+	 * @Description: 获取所有模板选项，按照 select2 需要的格式，即{id:,text} 
+	 * @return List<Map<String,String>>
+	 */
+	List<Map<String, String>> selectOptionList();
 }
