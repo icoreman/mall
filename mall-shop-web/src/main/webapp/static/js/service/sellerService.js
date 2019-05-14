@@ -27,5 +27,9 @@ app.service('sellerService',function($http){
 	//搜索
 	this.search=function(page,rows,searchEntity){
 		return $http.post('/seller/search?page='+page+"&rows="+rows, searchEntity);
-	}    	
+	}
+	// 获取用户名
+	this.loginName=function() {
+		return $http.get('/seller/name');
+	}
 });

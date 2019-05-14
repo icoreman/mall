@@ -1,8 +1,11 @@
 package com.xuxx.mall.shop.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +63,7 @@ public class SellerController {
 		try {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			seller.setPassword(passwordEncoder.encode(seller.getPassword()));
-			
+
 			sellerService.add(seller);
 			return Result.buildSuccessResult("增加成功");
 		} catch (Exception e) {
@@ -127,4 +130,12 @@ public class SellerController {
 		return sellerService.findPage(seller, page, rows);
 	}
 
+	@RequestMapping("/name")
+	public Map<String, String> name() {
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("loginName", name);
+
+		return map;
+	}
 }
