@@ -45,7 +45,8 @@
 
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
-		<url-pattern>/static/*"</url-pattern>
+		<url-pattern>/static/*</url-pattern>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	
 	<!-- Spring security -->
