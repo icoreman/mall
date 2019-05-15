@@ -51,4 +51,9 @@
 		id="sellerService" check="false" timeout="1000" />
 	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.GoodsService"
 		id="goodsService" check="false" timeout="1000" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.ItemCatService"
+		id="itemCatService" check="false" timeout="1000" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.TypeTemplateService"
+		id="typeTemplateService" check="false" timeout="1000" />
+
 </beans:beans>
