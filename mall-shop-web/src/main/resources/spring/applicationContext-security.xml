@@ -49,4 +49,6 @@
 	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
 	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.SellerService"
 		id="sellerService" check="false" timeout="1000" />
+	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.GoodsService"
+		id="goodsService" check="false" timeout="1000" />
 </beans:beans>

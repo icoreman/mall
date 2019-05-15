@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xuxx.entity.PageResult;
+import com.xuxx.mall.mapper.TbGoodsDescMapper;
 import com.xuxx.mall.mapper.TbGoodsMapper;
 import com.xuxx.mall.pojo.TbGoods;
+import com.xuxx.mall.pojo.TbGoodsDesc;
 import com.xuxx.mall.pojo.TbGoodsExample;
 import com.xuxx.mall.pojo.TbGoodsExample.Criteria;
 import com.xuxx.mall.sellergoods.service.GoodsService;
+import com.xuxx.mall.vo.GoodsVO;
 
 /**
  * 
@@ -29,6 +32,8 @@ public class GoodsServiceImpl implements GoodsService {
 	@Autowired
 	private TbGoodsMapper goodsMapper;
 	
+	@Autowired
+	private TbGoodsDescMapper goodsDescMapper;
 	/**
 	 * 查询全部
 	 */
@@ -51,8 +56,16 @@ public class GoodsServiceImpl implements GoodsService {
 	 * 增加
 	 */
 	@Override
-	public void add(TbGoods goods) {
-		goodsMapper.insert(goods);		
+	public void add(GoodsVO goods) {
+		TbGoods tbGoods = goods.getGoods();
+		tbGoods.setAuditStatus("0");
+		
+		goodsMapper.insert(tbGoods);
+		
+		TbGoodsDesc goodsDesc = goods.getGoodsDesc();
+		goodsDesc.setGoodsId(tbGoods.getId());
+		
+		goodsDescMapper.insert(goodsDesc);
 	}
 
 	

@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.xuxx.entity.PageResult;
 import com.xuxx.mall.pojo.TbGoods;
+import com.xuxx.mall.vo.GoodsVO;
 
 /**
  * 
@@ -32,7 +33,7 @@ public interface GoodsService {
 	/**
 	 * 增加
 	*/
-	public void add(TbGoods goods);
+	public void add(GoodsVO goods);
 	
 	
 	/**
