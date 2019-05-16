@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
@@ -28,6 +29,7 @@ import com.xuxx.mall.sellergoods.service.TypeTemplateService;
  * @since JDK 1.8
  *
  */
+@Transactional
 @Service(interfaceClass = TypeTemplateService.class)
 public class TypeTemplateServiceImpl implements TypeTemplateService {
 

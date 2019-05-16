@@ -29,4 +29,8 @@ app.service('goodsService',function($http){
 	this.search=function(page,rows,searchEntity){
 		return $http.post('/goods/search?page='+page+"&rows="+rows, searchEntity);
 	} 
+	// 上下架
+	this.updateMarketableStatus=function(ids,status){
+		return $http.get('/goods/updateMarketableStatus?ids='+ids+"&status="+status);
+	} 
 });

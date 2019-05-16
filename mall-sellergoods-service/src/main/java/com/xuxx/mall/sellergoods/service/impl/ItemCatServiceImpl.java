@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -23,7 +24,8 @@ import com.xuxx.mall.sellergoods.service.ItemCatService;
  * @since JDK 1.8
  *
  */
-@Service
+@Transactional
+@Service(interfaceClass = ItemCatService.class)
 public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
@@ -107,7 +109,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		TbItemCatExample example = new TbItemCatExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andParentIdEqualTo(parentId);
-		
+
 		return itemCatMapper.selectByExample(example);
 	}
 }

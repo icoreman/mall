@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -24,7 +25,8 @@ import com.xuxx.mall.sellergoods.service.SellerService;
  * @since JDK 1.8
  *
  */
-@Service
+@Transactional
+@Service(interfaceClass = SellerService.class)
 public class SellerServiceImpl implements SellerService {
 
 	@Autowired

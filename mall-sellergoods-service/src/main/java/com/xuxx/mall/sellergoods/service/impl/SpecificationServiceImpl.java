@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -25,10 +26,11 @@ import com.xuxx.mall.vo.SpecificationVO;
  *
  * @author xuxx
  * @date 2019-05-13 17:26:42
- * @since  JDK 1.8
+ * @since JDK 1.8
  *
  */
-@Service
+@Transactional
+@Service(interfaceClass = SpecificationService.class)
 public class SpecificationServiceImpl implements SpecificationService {
 
 	@Autowired
@@ -135,9 +137,8 @@ public class SpecificationServiceImpl implements SpecificationService {
 
 			// 删除规格选项表数据
 			TbSpecificationOptionExample example = new TbSpecificationOptionExample();
-			 TbSpecificationOptionExample.Criteria criteria =
-			 example.createCriteria();
-			 criteria.andSpecIdEqualTo(id);
+			TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+			criteria.andSpecIdEqualTo(id);
 			specificationOptionMapper.deleteByExample(example);
 		}
 	}
