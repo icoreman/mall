@@ -15,6 +15,9 @@
 		<module>mall-sellergoods-api</module>
 		<module>mall-sellergoods-service</module>
 		<module>mall-dao</module>
+		<module>mall-content-api</module>
+		<module>mall-content-service</module>
+		<module>mall-portal-web</module>
 	</modules>
 
 	<!-- 集中定义依赖版本号 -->
@@ -35,6 +38,9 @@
 		<curator.version>2.8.0</curator.version>
 		<commons-fileupload.version>1.3.1</commons-fileupload.version>
 		<freemarker.version>2.3.23</freemarker.version>
+		<jedis.version>2.8.1</jedis.version>
+		<spring-data-redis.version>1.7.2.RELEASE</spring-data-redis.version>
+		<spring-securty.version>4.1.0.RELEASE</spring-securty.version>
 		<activemq.version>5.11.2</activemq.version>
 		<security.version>3.2.3.RELEASE</security.version>
 		<solrj.version>4.10.3</solrj.version>
@@ -193,16 +199,17 @@
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons-fileupload.version}</version>
 			</dependency>
+			
 			<!-- 缓存 -->
 			<dependency>
 				<groupId>redis.clients</groupId>
 				<artifactId>jedis</artifactId>
-				<version>2.8.1</version>
+				<version>${jedis.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-redis</artifactId>
-				<version>1.7.2.RELEASE</version>
+				<version>${spring-data-redis.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.freemarker</groupId>
@@ -214,16 +221,17 @@
 				<artifactId>activemq-all</artifactId>
 				<version>${activemq.version}</version>
 			</dependency>
+			
 			<!-- 身份验证 -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-web</artifactId>
-				<version>4.1.0.RELEASE</version>
+				<version>${spring-securty.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-config</artifactId>
-				<version>4.1.0.RELEASE</version>
+				<version>${spring-securty.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.penggle</groupId>

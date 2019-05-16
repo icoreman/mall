@@ -23,4 +23,9 @@
 
 	<dubbo:reference id="itemCatService" check="false" timeout="1000"
 		interface="com.xuxx.mall.sellergoods.service.ItemCatService" />
+		
+	<dubbo:reference id="contentService" check="false" timeout="1000"
+		interface="com.xuxx.mall.content.service.ContentService" />
+	<dubbo:reference id="contentCategoryService" check="false" timeout="1000"
+		interface="com.xuxx.mall.content.service.ContentCategoryService" />
 </beans>

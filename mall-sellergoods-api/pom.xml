@@ -10,7 +10,7 @@
   	<dependency>
   		<groupId>com.xuxx</groupId>
   		<artifactId>mall-pojo</artifactId>
-  		<version>0.0.1</version>
+  		<version>${mall.version}</version>
   	</dependency>
   </dependencies>
 </project>
