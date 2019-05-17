@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.Page;
@@ -25,11 +26,14 @@ import com.xuxx.mall.sellergoods.service.ItemCatService;
  *
  */
 @Transactional
-@Service(interfaceClass = ItemCatService.class)
+@Service(interfaceClass = ItemCatService.class, timeout = 10000)
 public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
+
+	@Autowired
+	private RedisTemplate redisTemplate;
 
 	/**
 	 * 查询全部
@@ -97,7 +101,6 @@ public class ItemCatServiceImpl implements ItemCatService {
 			if (itemCat.getName() != null && itemCat.getName().length() > 0) {
 				criteria.andNameLike("%" + itemCat.getName() + "%");
 			}
-
 		}
 
 		Page<TbItemCat> page = (Page<TbItemCat>) itemCatMapper.selectByExample(example);
@@ -109,6 +112,13 @@ public class ItemCatServiceImpl implements ItemCatService {
 		TbItemCatExample example = new TbItemCatExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andParentIdEqualTo(parentId);
+
+		// 将模板ID放入缓存（以商品分类名称作为key）
+		System.out.println("缓存商品分类");
+		List<TbItemCat> itemCatList = findAll();
+		for (TbItemCat itemCat : itemCatList) {
+			redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());
+		}
 
 		return itemCatMapper.selectByExample(example);
 	}

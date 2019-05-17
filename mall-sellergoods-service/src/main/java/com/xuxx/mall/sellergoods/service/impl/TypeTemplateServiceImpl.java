@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
@@ -29,8 +30,9 @@ import com.xuxx.mall.sellergoods.service.TypeTemplateService;
  * @since JDK 1.8
  *
  */
+@SuppressWarnings(value = { "unchecked", "rawtypes" })
 @Transactional
-@Service(interfaceClass = TypeTemplateService.class)
+@Service(interfaceClass = TypeTemplateService.class, timeout = 10000)
 public class TypeTemplateServiceImpl implements TypeTemplateService {
 
 	@Autowired
@@ -38,6 +40,10 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 
 	@Autowired
 	private TbSpecificationOptionMapper specificationOptionMapper;
+
+	@Autowired
+	private RedisTemplate redisTemplate;
+
 	/**
 	 * 查询全部
 	 */
@@ -117,7 +123,30 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 		}
 
 		Page<TbTypeTemplate> page = (Page<TbTypeTemplate>) typeTemplateMapper.selectByExample(example);
+
+		// 缓存 品牌列表、规格列表到 redis
+		// 因为 增删改之后，都要重新查询列表，所以直接写在这
+		saveToRedis();
 		return new PageResult<TbTypeTemplate>(page.getTotal(), page.getResult());
+	}
+
+	/**
+	 * 
+	 * @Title: saveToRedis
+	 * @Description: 将品牌列表与规格列表放入缓存, 以模板 id 为key
+	 */
+	private void saveToRedis() {
+		System.out.println("缓存品牌列表和规格列表");
+		List<TbTypeTemplate> templateList = findAll();
+		for (TbTypeTemplate template : templateList) {
+			// 得到品牌列表
+			List<Map> brandList = JSON.parseArray(template.getBrandIds(), Map.class);
+			redisTemplate.boundHashOps("brandList").put(template.getId(), brandList);
+
+			// 得到规格列表
+			List<Map> specList = findSpecList(template.getId());
+			redisTemplate.boundHashOps("specList").put(template.getId(), specList);
+		}
 	}
 
 	@Override
@@ -127,22 +156,22 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 
 	@Override
 	public List<Map> findSpecList(Long id) {
-		//查询模板
+		// 查询模板
 		TbTypeTemplate typeTemplate = typeTemplateMapper.selectByPrimaryKey(id);
-		
-		List<Map> list = JSON.parseArray(typeTemplate.getSpecIds(), Map.class)  ;
-		
-		for(Map map:list){
-			//查询规格选项列表
-			TbSpecificationOptionExample example=new TbSpecificationOptionExample();
+
+		List<Map> list = JSON.parseArray(typeTemplate.getSpecIds(), Map.class);
+
+		for (Map map : list) {
+			// 查询规格选项列表
+			TbSpecificationOptionExample example = new TbSpecificationOptionExample();
 			TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
-			criteria.andSpecIdEqualTo( new Long( (Integer)map.get("id") ) );
-			
+			criteria.andSpecIdEqualTo(new Long((Integer) map.get("id")));
+
 			List<TbSpecificationOption> options = specificationOptionMapper.selectByExample(example);
-			
+
 			map.put("options", options);
 		}
-		
+
 		return list;
 	}
 }

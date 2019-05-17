@@ -12,6 +12,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.xuxx</groupId>
+			<artifactId>mall-common</artifactId>
+			<version>${mall.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xuxx</groupId>
 			<artifactId>mall-sellergoods-api</artifactId>
 			<version>${mall.version}</version>
 		</dependency>
