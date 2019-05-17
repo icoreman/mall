@@ -18,6 +18,10 @@
 		<module>mall-content-api</module>
 		<module>mall-content-service</module>
 		<module>mall-portal-web</module>
+		<module>mall-solr-util</module>
+		<module>mall-search-api</module>
+		<module>mall-search-service</module>
+		<module>mall-search-web</module>
 	</modules>
 
 	<!-- 集中定义依赖版本号 -->
@@ -44,6 +48,7 @@
 		<activemq.version>5.11.2</activemq.version>
 		<security.version>3.2.3.RELEASE</security.version>
 		<solrj.version>4.10.3</solrj.version>
+		<spring-data-solr.version>1.5.5.RELEASE</spring-data-solr.version>
 		<ik.version>2012_u6</ik.version>
 		<netty.version>4.1.36.Final</netty.version>
 	</properties>
@@ -199,7 +204,7 @@
 				<artifactId>commons-fileupload</artifactId>
 				<version>${commons-fileupload.version}</version>
 			</dependency>
-			
+
 			<!-- 缓存 -->
 			<dependency>
 				<groupId>redis.clients</groupId>
@@ -221,7 +226,7 @@
 				<artifactId>activemq-all</artifactId>
 				<version>${activemq.version}</version>
 			</dependency>
-			
+
 			<!-- 身份验证 -->
 			<dependency>
 				<groupId>org.springframework.security</groupId>
@@ -262,6 +267,11 @@
 				</exclusions>
 			</dependency>
 			<!-- solr客户端 -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-solr</artifactId>
+				<version>${spring-data-solr.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.apache.solr</groupId>
 				<artifactId>solr-solrj</artifactId>

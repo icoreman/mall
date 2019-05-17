@@ -48,12 +48,12 @@
 	<dubbo:application name="mall-manager-web" />
 	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
 	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.SellerService"
-		id="sellerService" check="false" timeout="1000" />
+		id="sellerService" check="false" />
 	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.GoodsService"
-		id="goodsService" check="false" timeout="1000" />
+		id="goodsService" check="false" />
 	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.ItemCatService"
-		id="itemCatService" check="false" timeout="1000" />
+		id="itemCatService" check="false" />
 	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.TypeTemplateService"
-		id="typeTemplateService" check="false" timeout="1000" />
+		id="typeTemplateService" check="false" />
 
 </beans:beans>
