@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.xuxx.entity.PageResult;
 import com.xuxx.mall.pojo.TbGoods;
+import com.xuxx.mall.pojo.TbItem;
 import com.xuxx.mall.vo.GoodsVO;
 
 /**
@@ -81,5 +82,13 @@ public interface GoodsService {
 	 * @param status 
 	 */
 	public void updateMarketableStatus(Long[] ids, String status);
-	
+	/**
+	 * 
+	 * @Title: findItemListByGoodsIdListAndStatus 
+	 * @Description: 通过 spu 的 goodsId 和 status 找到 sku 的商品集合
+	 * @param goodsIds
+	 * @param status
+	 * @return List<TbItem>  
+	 */
+	public List<TbItem>	findItemListByGoodsIdListAndStatus(Long []goodsIds,String status);
 }

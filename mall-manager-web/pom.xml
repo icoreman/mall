@@ -26,6 +26,12 @@
 			<artifactId>mall-content-api</artifactId>
 			<version>${mall.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.xuxx</groupId>
+			<artifactId>mall-search-api</artifactId>
+			<version>${mall.version}</version>
+		</dependency>
+		
 
 		<!-- Spring -->
 		<dependency>

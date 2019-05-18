@@ -15,19 +15,19 @@ import com.xuxx.mall.search.service.ItemSearchService;
  *
  * @author xuxx
  * @date 2019-05-17 14:32:26
- * @since  JDK 1.8
+ * @since JDK 1.8
  *
  */
 @RestController
 @RequestMapping("/itemsearch")
 public class ItemSearchController {
-	
+
 	@Autowired
 	private ItemSearchService itemSearchService;
-	
+
 	@RequestMapping("/search")
-	public Map search(@RequestBody Map searchMap){
-		return itemSearchService.search(searchMap);		
+	public Map search(@RequestBody Map searchMap) {
+		return itemSearchService.search(searchMap);
 	}
 
 }

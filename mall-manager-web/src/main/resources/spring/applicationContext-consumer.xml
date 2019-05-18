@@ -23,6 +23,8 @@
 
 	<dubbo:reference id="itemCatService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.ItemCatService" />
+	<dubbo:reference id="itemSearchService" check="false"
+		interface="com.xuxx.mall.search.service.ItemSearchService" />
 
 	<dubbo:reference id="contentService" check="false"
 		interface="com.xuxx.mall.content.service.ContentService" />

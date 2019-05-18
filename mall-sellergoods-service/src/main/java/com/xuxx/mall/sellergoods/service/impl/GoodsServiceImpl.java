@@ -1,5 +1,6 @@
 package com.xuxx.mall.sellergoods.service.impl;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -274,5 +275,16 @@ public class GoodsServiceImpl implements GoodsService {
 
 			goodsMapper.updateByPrimaryKey(goods);
 		}
+	}
+
+	@Override
+	public List<TbItem> findItemListByGoodsIdListAndStatus(Long[] goodsIds, String status) {
+
+		TbItemExample example = new TbItemExample();
+		TbItemExample.Criteria criteria = example.createCriteria();
+		criteria.andStatusEqualTo(status);// 状态
+		criteria.andGoodsIdIn(Arrays.asList(goodsIds));// 指定条件：SPUID集合
+
+		return itemMapper.selectByExample(example);
 	}
 }

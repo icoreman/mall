@@ -1,4 +1,5 @@
 package com.xuxx.mall.manager.controller;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xuxx.entity.PageResult;
 import com.xuxx.entity.Result;
 import com.xuxx.mall.pojo.TbGoods;
+import com.xuxx.mall.pojo.TbItem;
+import com.xuxx.mall.search.service.ItemSearchService;
 import com.xuxx.mall.sellergoods.service.GoodsService;
 import com.xuxx.mall.vo.GoodsVO;
 /**
@@ -22,6 +25,9 @@ public class GoodsController {
 
 	@Autowired
 	private GoodsService goodsService;
+	
+	@Autowired
+	private ItemSearchService itemSearchService;
 	
 	/**
 	 * 返回全部列表
@@ -79,6 +85,10 @@ public class GoodsController {
 	public Result delete(Long [] ids){
 		try {
 			goodsService.delete(ids);
+			
+			//从索引库中删除 TODO: 使用消息中间件或者多线程异步删除
+			itemSearchService.deleteByGoodsIds(Arrays.asList(ids));
+			
 			return Result.buildSuccessResult("删除成功"); 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -102,6 +112,14 @@ public class GoodsController {
 	public Result updateStatus(Long[] ids, String status){
 		try {
 			goodsService.updateStatus(ids, status);
+			
+			if("1".equals(status)){//如果是审核通过 
+				//得到需要导入的SKU列表
+				List<TbItem> itemList = goodsService.findItemListByGoodsIdListAndStatus(ids, status);
+				//导入到solr
+				itemSearchService.importList(itemList);				
+			}
+			
 			return Result.buildSuccessResult("成功");
 		} catch (Exception e) {
 			e.printStackTrace();
