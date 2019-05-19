@@ -30,4 +30,7 @@
 		interface="com.xuxx.mall.content.service.ContentService" />
 	<dubbo:reference id="contentCategoryService" check="false"
 		interface="com.xuxx.mall.content.service.ContentCategoryService" />
+
+	<dubbo:reference id="itemPageService" check="false"
+		interface="com.xuxx.mall.page.service.ItemPageService" />
 </beans>

@@ -22,6 +22,9 @@
 		<module>mall-search-api</module>
 		<module>mall-search-service</module>
 		<module>mall-search-web</module>
+		<module>mall-page-interface</module>
+		<module>mall-page-service</module>
+		<module>mall-page-web</module>
 	</modules>
 
 	<!-- 集中定义依赖版本号 -->

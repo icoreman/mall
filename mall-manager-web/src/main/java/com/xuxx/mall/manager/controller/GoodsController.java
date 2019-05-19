@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xuxx.entity.PageResult;
 import com.xuxx.entity.Result;
+import com.xuxx.mall.page.service.ItemPageService;
 import com.xuxx.mall.pojo.TbGoods;
 import com.xuxx.mall.pojo.TbItem;
 import com.xuxx.mall.search.service.ItemSearchService;
@@ -28,6 +29,9 @@ public class GoodsController {
 	
 	@Autowired
 	private ItemSearchService itemSearchService;
+	
+	@Autowired
+	private ItemPageService itemPageService;
 	
 	/**
 	 * 返回全部列表
@@ -127,4 +131,8 @@ public class GoodsController {
 		}		
 	}
 	
+	@RequestMapping("/genHtml")
+	public void genHtml(Long goodsId){
+		itemPageService.genItemHtml(goodsId);
+	}
 }
