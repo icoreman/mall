@@ -1,14 +1,15 @@
 package com.xuxx.mall.page.service.impl;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
@@ -36,7 +37,7 @@ import freemarker.template.Template;
  *
  */
 @Transactional
-@Service(timeout = 60000)
+@Service
 public class ItemPageServiceImpl implements ItemPageService {
 
 	@Autowired
@@ -102,4 +103,16 @@ public class ItemPageServiceImpl implements ItemPageService {
 		}
 	}
 
+	@Override
+	public boolean deleteItemHtml(Long[] goodsIds) {
+		try {
+			for(Long goodsId:goodsIds){
+				new File(pagedir+goodsId+".html").delete();		
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}		
+	}
 }

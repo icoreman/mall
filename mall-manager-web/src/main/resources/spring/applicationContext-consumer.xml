@@ -12,25 +12,26 @@
 
 	<dubbo:reference id="brandService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.BrandService" />
+		
 	<dubbo:reference id="goodsService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.GoodsService" />
+		
 	<dubbo:reference id="sellerService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.SellerService" />
+		
 	<dubbo:reference id="specificationService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.SpecificationService" />
+		
 	<dubbo:reference id="typeTemplateService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.TypeTemplateService" />
-
+		
 	<dubbo:reference id="itemCatService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.ItemCatService" />
-	<dubbo:reference id="itemSearchService" check="false"
-		interface="com.xuxx.mall.search.service.ItemSearchService" />
 
 	<dubbo:reference id="contentService" check="false"
 		interface="com.xuxx.mall.content.service.ContentService" />
+		
 	<dubbo:reference id="contentCategoryService" check="false"
 		interface="com.xuxx.mall.content.service.ContentCategoryService" />
 
-	<dubbo:reference id="itemPageService" check="false"
-		interface="com.xuxx.mall.page.service.ItemPageService" />
 </beans>

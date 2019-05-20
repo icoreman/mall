@@ -26,16 +26,6 @@
 			<artifactId>mall-content-api</artifactId>
 			<version>${mall.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.xuxx</groupId>
-			<artifactId>mall-search-api</artifactId>
-			<version>${mall.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xuxx</groupId>
-			<artifactId>mall-page-interface</artifactId>
-			<version>${mall.version}</version>
-		</dependency>
 
 		<!-- Spring -->
 		<dependency>
@@ -70,8 +60,8 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-		
-		<!-- spring security  -->
+
+		<!-- spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -80,7 +70,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
-		
+
 		<!-- dubbo相关 -->
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
@@ -123,6 +113,13 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- mq -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>${activemq.version}</version>
 		</dependency>
 	</dependencies>
 
