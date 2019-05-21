@@ -12,6 +12,7 @@ public class Result implements Serializable{
 	
 	private String message;//返回信息
 	
+	private Object data;
 	
 	public Result(boolean success, String message) {
 		super();
@@ -31,18 +32,26 @@ public class Result implements Serializable{
 		return success;
 	}
 
-	public void setSuccess(boolean success) {
+	public Result setSuccess(boolean success) {
 		this.success = success;
+		return this;
 	}
 
 	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public Result setMessage(String message) {
 		this.message = message;
+		return this;
 	}
-	
-	
-	
+
+	public Object getData() {
+		return data;
+	}
+
+	public Result setData(Object data) {
+		this.data = data;
+		return this;
+	}
 }

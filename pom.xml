@@ -25,6 +25,9 @@
 		<module>mall-page-interface</module>
 		<module>mall-page-service</module>
 		<module>mall-page-web</module>
+		<module>mall-user-api</module>
+		<module>mall-user-service</module>
+		<module>mall-user-web</module>
 	</modules>
 
 	<!-- 集中定义依赖版本号 -->
