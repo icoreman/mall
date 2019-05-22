@@ -7,8 +7,9 @@
 		<artifactId>mall-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<artifactId>mall-user-web</artifactId>
 	<packaging>war</packaging>
+	<artifactId>mall-user-web</artifactId>
+	<description>用户中心</description>
 	
 	<dependencies>
 		<dependency>
