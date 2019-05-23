@@ -10,9 +10,15 @@
         http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <dubbo:protocol name="dubbo" port="20887"></dubbo:protocol>
+    <dubbo:protocol name="dubbo" port="20888"></dubbo:protocol>
     
-	<dubbo:application name="mall-car-service"/>  
+	<dubbo:application name="mall-order-service"/>  
     <dubbo:registry address="zookeeper://192.168.1.107:2181"/>
-    <dubbo:annotation package="com.xuxx.mall.cart.service.impl" />  
+    <dubbo:annotation package="com.xuxx.mall.order.service.impl" />  
+    
+    
+    <bean id="idWorker" class="util.IdWorker">
+    	<constructor-arg index="0" value="0"></constructor-arg>
+    	<constructor-arg index="1" value="0"></constructor-arg>
+    </bean>
 </beans>

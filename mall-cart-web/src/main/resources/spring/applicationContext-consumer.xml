@@ -12,5 +12,8 @@
 
 	<dubbo:reference id="cartService" check="false"
 		interface="com.xuxx.mall.cart.service.CartService" />
-
+	<dubbo:reference id="addressService" check="false"
+		interface="com.xuxx.mall.user.service.AddressService" />
+	<dubbo:reference id="orderService" check="false"
+		interface="com.xuxx.mall.user.service.OrderService" />
 </beans>

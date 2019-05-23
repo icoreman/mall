@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -75,6 +76,7 @@ public class CartController {
 	}
 
 	@RequestMapping("/addGoodsToCartList")
+	@CrossOrigin(origins = "http://localhost:9105")
 	public Result addGoodsToCartList(Long itemId, Integer num) {
 		// 当前登录人账号
 		String name = SecurityContextHolder.getContext().getAuthentication().getName();
