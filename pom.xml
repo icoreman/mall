@@ -35,6 +35,9 @@
 		<module>mall-order-service</module>
 		<module>mall-pay-api</module>
 		<module>mall-pay-service</module>
+		<module>mall-seckill-api</module>
+		<module>mall-seckill-service</module>
+		<module>mall-seckill-web</module>
 	</modules>
 
 	<!-- 集中定义依赖版本号 -->

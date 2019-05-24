@@ -19,6 +19,7 @@ import util.IdWorker;
  * @since JDK 1.8
  *
  */
+
 @Service
 public class WeixinPayServiceImpl implements WeixinPayService {
 
@@ -64,6 +65,29 @@ public class WeixinPayServiceImpl implements WeixinPayService {
 			return map;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return map;
+		}
+	}
+
+	@SuppressWarnings("finally")
+	@Override
+	public Map<String, String> closePay(String out_trade_no) {
+		String xmlResult = "<xml>" +
+				"   <return_code><![CDATA[SUCCESS]]></return_code>" +
+				"   <return_msg><![CDATA[OK]]></return_msg>" +
+				"   <appid><![CDATA[wx2421b1c4370ec43b]]></appid>" +
+				"   <mch_id><![CDATA[10000100]]></mch_id>" +
+				"   <nonce_str><![CDATA[BFK89FC6rxKCOjLX]]></nonce_str>" +
+				"   <sign><![CDATA[72B321D92A7BFA0B2509F3D13C7B1631]]></sign>" +
+				"   <result_code><![CDATA[SUCCESS]]></result_code>" +
+				"   <result_msg><![CDATA[OK]]></result_msg>" +
+				"</xml>";
+		Map<String, String> map = new HashMap<String, String>();
+		try {
+			map = WXPayUtil.xmlToMap(xmlResult);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			return map;
 		}
 	}
