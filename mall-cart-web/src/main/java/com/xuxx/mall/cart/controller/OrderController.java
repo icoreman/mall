@@ -12,6 +12,7 @@ import com.xuxx.entity.PageResult;
 import com.xuxx.entity.Result;
 import com.xuxx.mall.order.service.OrderService;
 import com.xuxx.mall.pojo.TbOrder;
+import com.xuxx.mall.pojo.TbPayLog;
 
 /**
  * 
@@ -60,6 +61,12 @@ public class OrderController {
 
 		// 获取当前登录人账号
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		TbPayLog payLog = orderService.searchPayLogFromRedis(username);
+		if(payLog != null) {
+			return Result.buildFailResult("您有未支付的订单，请先支付或取消").setData(payLog);
+		}
+		
 		order.setUserId(username);
 		order.setSourceType("2");// 订单来源 PC
 

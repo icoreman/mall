@@ -16,4 +16,6 @@
 		interface="com.xuxx.mall.user.service.AddressService" />
 	<dubbo:reference id="orderService" check="false"
 		interface="com.xuxx.mall.user.service.OrderService" />
+	<dubbo:reference id="weixinPayService" check="false"
+		interface="com.xuxx.mall.pay.service.WeixinPayService" />
 </beans>

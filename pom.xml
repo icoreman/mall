@@ -33,6 +33,8 @@
 		<module>mall-cart-web</module>
 		<module>mall-order-api</module>
 		<module>mall-order-service</module>
+		<module>mall-pay-api</module>
+		<module>mall-pay-service</module>
 	</modules>
 
 	<!-- 集中定义依赖版本号 -->

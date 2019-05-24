@@ -7,36 +7,22 @@
 		<artifactId>mall-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<artifactId>mall-cart-web</artifactId>
+	<artifactId>mall-pay-service</artifactId>
 	<packaging>war</packaging>
-	
+
 	<dependencies>
-		<dependency>
-			<groupId>com.xuxx</groupId>
-			<artifactId>mall-common</artifactId>
-			<version>${mall.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xuxx</groupId>
-			<artifactId>mall-cart-api</artifactId>
-			<version>${mall.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xuxx</groupId>
-			<artifactId>mall-user-api</artifactId>
-			<version>${mall.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xuxx</groupId>
-			<artifactId>mall-order-api</artifactId>
-			<version>${mall.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>com.xuxx</groupId>
 			<artifactId>mall-pay-api</artifactId>
 			<version>${mall.version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>com.xuxx</groupId>
+			<artifactId>mall-common</artifactId>
+			<version>${mall.version}</version>
+		</dependency>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -49,10 +35,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -115,32 +97,13 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- 认证 cas -->
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-cas</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.jasig.cas.client</groupId>
-			<artifactId>cas-client-core</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>log4j-over-slf4j</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>com.github.wxpay</groupId>
+			<artifactId>wxpay-sdk</artifactId>
+			<version>0.0.3</version>
 		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>
@@ -150,7 +113,7 @@
 				<version>2.2</version>
 				<configuration>
 					<!-- 指定端口 -->
-					<port>9107</port>
+					<port>9009</port>
 					<!-- 请求路径 -->
 					<path>/</path>
 				</configuration>

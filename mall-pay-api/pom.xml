@@ -5,9 +5,10 @@
     <artifactId>mall-parent</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>mall-cart-api</artifactId>
+  <artifactId>mall-pay-api</artifactId>
   
-  <dependencies>
+  
+   <dependencies>
   	<dependency>
   		<groupId>com.xuxx</groupId>
   		<artifactId>mall-pojo</artifactId>
