@@ -7,18 +7,13 @@
 		<artifactId>mall-parent</artifactId>
 		<version>0.0.1</version>
 	</parent>
+	<artifactId>mall-task-scheduler</artifactId>
 	<packaging>war</packaging>
-	<artifactId>mall-page-service</artifactId>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.xuxx</groupId>
 			<artifactId>mall-common</artifactId>
-			<version>${mall.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xuxx</groupId>
-			<artifactId>mall-page-interface</artifactId>
 			<version>${mall.version}</version>
 		</dependency>
 		<dependency>
@@ -60,28 +55,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-		
-		<!-- dubbo相关 -->
-		<dependency>
-			<groupId>org.apache.dubbo</groupId>
-			<artifactId>dubbo</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.zookeeper</groupId>
-			<artifactId>zookeeper</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.101tec</groupId>
-			<artifactId>zkclient</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.curator</groupId>
-			<artifactId>curator-framework</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.curator</groupId>
-			<artifactId>curator-recipes</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -104,19 +77,6 @@
 			<artifactId>servlet-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- freemaker -->
-		<dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-		</dependency>
-
-		<!-- mq -->
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-client</artifactId>
-			<version>${activemq.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -127,7 +87,7 @@
 				<version>2.2</version>
 				<configuration>
 					<!-- 指定端口 -->
-					<port>9005</port>
+					<port>9108</port>
 					<!-- 请求路径 -->
 					<path>/</path>
 				</configuration>

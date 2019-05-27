@@ -8,14 +8,13 @@
 	http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
 	<dubbo:application name="mall-cart-web" />
-	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
 
 	<dubbo:reference id="cartService" check="false"
 		interface="com.xuxx.mall.cart.service.CartService" />
 	<dubbo:reference id="addressService" check="false"
 		interface="com.xuxx.mall.user.service.AddressService" />
 	<dubbo:reference id="orderService" check="false"
-		interface="com.xuxx.mall.user.service.OrderService" />
+		interface="com.xuxx.mall.order.service.OrderService" />
 	<dubbo:reference id="weixinPayService" check="false"
 		interface="com.xuxx.mall.pay.service.WeixinPayService" />
 </beans>

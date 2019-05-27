@@ -8,7 +8,6 @@
 	http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
 	<dubbo:application name="mall-manager-web" />
-	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
 
 	<dubbo:reference id="brandService" check="false"
 		interface="com.xuxx.mall.sellergoods.service.BrandService" />
@@ -33,5 +32,4 @@
 		
 	<dubbo:reference id="contentCategoryService" check="false"
 		interface="com.xuxx.mall.content.service.ContentCategoryService" />
-
 </beans>

@@ -8,7 +8,6 @@
 	http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
 	<dubbo:application name="mall-portal-web" />
-	<dubbo:registry address="zookeeper://192.168.1.107:2181" />
 
 	<dubbo:reference id="contentService" check="false" timeout="1000"
 		interface="com.xuxx.mall.content.service.ContentService" />

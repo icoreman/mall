@@ -40,7 +40,7 @@ import com.xuxx.mall.search.service.ItemSearchService;
  *
  */
 @SuppressWarnings(value = { "rawtypes", "unchecked" })
-@Service(timeout = 5000)
+@Service(timeout = 10000)
 public class ItemSearchServiceImpl implements ItemSearchService {
 
 	@Autowired
@@ -233,6 +233,9 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 		if (templateId != null) {
 			// 2.根据模板ID获取品牌列表
 			List brandList = (List) redisTemplate.boundHashOps("brandList").get(templateId);
+			if(brandList == null) {
+				throw new RuntimeException("redis 中品牌列表为空，请运行运营商管理后台，缓存品牌列表");
+			}
 			map.put("brandList", brandList);
 			System.out.println("品牌列表条数：" + brandList.size());
 

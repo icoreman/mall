@@ -41,7 +41,7 @@ import com.xuxx.mall.vo.GoodsVO;
  *
  */
 @Transactional
-@Service(interfaceClass = GoodsService.class)
+@Service(interfaceClass = GoodsService.class, timeout = 30000)
 public class GoodsServiceImpl implements GoodsService {
 
 	@Autowired

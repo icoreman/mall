@@ -12,7 +12,6 @@
 
     <dubbo:protocol name="dubbo" port="20889"></dubbo:protocol>
 	<dubbo:application name="mall-seckill-service"/>  
-    <dubbo:registry address="zookeeper://192.168.1.107:2181"/>
     <dubbo:annotation package="com.xuxx.mall.seckill.service.impl" />  
     
     <bean id="idWorker" class="util.IdWorker">

@@ -13,6 +13,5 @@
     <dubbo:protocol name="dubbo" port="20887"></dubbo:protocol>
     
 	<dubbo:application name="mall-car-service"/>  
-    <dubbo:registry address="zookeeper://192.168.1.107:2181"/>
     <dubbo:annotation package="com.xuxx.mall.cart.service.impl" />  
 </beans>
