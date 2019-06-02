@@ -7,7 +7,7 @@ a B2B2C mall system.
 
 <h2 id="如何单机运行此项目">如何单机运行此项目</h2>
 
-需要有一定的 Java 分布式相关基础，这里就没写太细。
+需要有一定的 Java 分布式相关基础，这里就没写太细。  
 1、 clone 项目。  
 2、 安装相关中间件([极简易教程](https://www.jianshu.com/p/6309efb2a821))：redis、zookeeper、solr、fastfds、cas、activemq等。运行 `mall-parent/src/mall.sql` 建库。  
 3、 在 `mall-common/src/main/resources` 项目中配置相关中间件的参数，配置 `mall-dao/src/main/resources/properties/db.peroperties` 中的数据库相关参数。  
@@ -16,7 +16,7 @@ a B2B2C mall system.
 6、 可以依次打包，放入容器中运行，或者依次运行命令 `tomcat7:run` 运行，因为有 tomcat 插件。
 
 ## 如何建立集群
-[ ] 还没写  
+- [ ] 还没写  
 
 ### 运营商管理后台：
 - 对商家的审核、管理。
@@ -25,7 +25,7 @@ a B2B2C mall system.
 - ...
 
 商品审核通过后，会调用 activemq，发起一个名为“mall_queue_solr_add_item”队列的消息，搜索服务监听此队列，将这个商品对应的 sku 列表同步至 solr。
-商品下架、删除同理。
+商品下架、删除同理。  
 审核通过同时会发起一个名为”mall_topic_freemarker_create_item_page“主题的消息，页面生成服务监听此主题，将生成商品的静态的页面。 
 
 商家审核通过之后，调用 activemq，生成短信服务队列消息，短信服务监听此队列，给对应商家发送消息。
@@ -65,6 +65,6 @@ a B2B2C mall system.
 
 由于支付、短信服务申请都很麻烦，以个人身份申请很难，所以，就没有做。 
  
-- [ ] 日志
-- [ ] 分布式集群部署
-- [如何单机运行此项目](如何单机运行此项目)
+- [ ] 日志  
+- [ ] 分布式集群部署  
+- [x][如何单机运行此项目](如何单机运行此项目)
