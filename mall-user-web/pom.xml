@@ -126,6 +126,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jasig.cas/cas-server-support-jdbc -->
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-support-jdbc</artifactId>
+			<version>4.1.8</version>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 

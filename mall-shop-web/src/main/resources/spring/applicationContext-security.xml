@@ -8,12 +8,12 @@
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<!-- 设置页面不登陆也可以访问 -->
-	<http pattern="/*.html" security="none"></http>
-	<http pattern="/static/css/**" security="none"></http>
-	<http pattern="/static/img/**" security="none"></http>
-	<http pattern="/static/js/**" security="none"></http>
-	<http pattern="/static/plugins/**" security="none"></http>
-	<http pattern="/seller/add" security="none"></http>
+	<http pattern="/*.html" security="none"/>
+	<http pattern="/static/css/**" security="none"/>
+	<http pattern="/static/img/**" security="none"/>
+	<http pattern="/static/js/**" security="none"/>
+	<http pattern="/static/plugins/**" security="none"/>
+	<http pattern="/seller/add" security="none"/>
 
 	<!-- 页面的拦截规则 use-expressions:是否启动SPEL表达式 默认是true -->
 	<http use-expressions="false">
@@ -32,14 +32,14 @@
 	<!-- 认证管理器 -->
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailService">
-			<password-encoder ref="bcryptEncoder"></password-encoder>
+			<password-encoder ref="bcryptEncoder"/>
 		</authentication-provider>
 	</authentication-manager>
 
 	<!-- 认证类 -->
 	<beans:bean id="userDetailService"
 		class="com.xuxx.mall.shop.service.UserDetailsServiceImpl">
-		<beans:property name="sellerService" ref="sellerService"></beans:property>
+		<beans:property name="sellerService" ref="sellerService"/>
 	</beans:bean>
 
 	<beans:bean id="bcryptEncoder"
@@ -54,5 +54,4 @@
 		id="itemCatService" check="false" />
 	<dubbo:reference interface="com.xuxx.mall.sellergoods.service.TypeTemplateService"
 		id="typeTemplateService" check="false" />
-
 </beans:beans>
