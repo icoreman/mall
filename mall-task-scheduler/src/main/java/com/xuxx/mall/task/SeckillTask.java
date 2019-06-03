@@ -21,12 +21,11 @@ import com.xuxx.mall.pojo.TbSeckillGoodsExample.Criteria;
  *
  * @author xuxx
  * @date 2019-05-25 15:43:43
- * @since  JDK 1.8
+ * @since JDK 1.8
  *
  */
 @Component
 public class SeckillTask {
-
 	@Autowired
 	private RedisTemplate redisTemplate;
 
@@ -35,7 +34,7 @@ public class SeckillTask {
 
 	/**
 	 * 
-	 * @Title: refreshSeckillGoods 
+	 * @Title: refreshSeckillGoods
 	 * @Description: 每分钟定时增量刷新秒杀列表
 	 */
 	@Scheduled(cron = "0 * * * * ?")
@@ -68,7 +67,7 @@ public class SeckillTask {
 
 	/**
 	 * 
-	 * @Title: removeSeckillGoods 
+	 * @Title: removeSeckillGoods
 	 * @Description: 每秒钟检查是否过期
 	 */
 	@Scheduled(cron = "* * * * * ?")
@@ -76,7 +75,7 @@ public class SeckillTask {
 		// 查询出缓存中的数据，扫描每条记录，判断时间，如果当前时间超过了截止时间，移除此记录
 		List<TbSeckillGoods> seckillGoodsList = redisTemplate.boundHashOps("seckillGoods").values();
 		System.out.println("执行了清除秒杀商品的任务" + new Date());
-		
+
 		for (TbSeckillGoods seckillGoods : seckillGoodsList) {
 			if (seckillGoods.getEndTime().getTime() < new Date().getTime()) {
 				// 同步到数据库

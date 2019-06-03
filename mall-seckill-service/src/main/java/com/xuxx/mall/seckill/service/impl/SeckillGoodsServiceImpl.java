@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +31,8 @@ import com.xuxx.mall.seckill.service.SeckillGoodsService;
 @Service
 @Transactional
 public class SeckillGoodsServiceImpl implements SeckillGoodsService {
-
+	private static final Logger log = Logger.getLogger(SeckillGoodsServiceImpl.class);
+	
 	@Autowired
 	private TbSeckillGoodsMapper seckillGoodsMapper;
 
@@ -137,9 +139,9 @@ public class SeckillGoodsServiceImpl implements SeckillGoodsService {
 			for (TbSeckillGoods seckillGoods : seckillGoodsList) {
 				redisTemplate.boundHashOps("seckillGoods").put(seckillGoods.getId(), seckillGoods);
 			}
-			System.out.println("从数据库中读取数据装入缓存");
+			log.info("从数据库中读取数据装入缓存");
 		} else {
-			System.out.println("从缓存中读取数据");
+			log.info("从缓存中读取数据");
 		}
 		return seckillGoodsList;
 

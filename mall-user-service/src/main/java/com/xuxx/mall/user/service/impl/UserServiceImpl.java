@@ -13,6 +13,7 @@ import javax.jms.Session;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -42,10 +43,11 @@ import com.xuxx.mall.user.service.UserService;
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
+	private static final Logger log = Logger.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	private TbUserMapper userMapper;
-	
+
 	@Autowired
 	private RedisTemplate redisTemplate;
 
@@ -179,11 +181,11 @@ public class UserServiceImpl implements UserService {
 	public String createSmsCode(final String phone) {
 		// 1.生成一个6位随机数（验证码）
 		final String smscode = (long) (Math.random() * 1000000) + "";
-		System.out.println("验证码：" + smscode);
+		log.info("验证码：" + smscode);
 
 		// 2.将验证码放入redis
 		redisTemplate.boundHashOps("smscode").put(phone, smscode);
-		
+
 		// 3.将短信内容发送给activeMQ
 		jmsTemplate.send(smsDestination, new MessageCreator() {
 
@@ -199,7 +201,7 @@ public class UserServiceImpl implements UserService {
 				return message;
 			}
 		});
-		
+
 		return smscode;
 	}
 

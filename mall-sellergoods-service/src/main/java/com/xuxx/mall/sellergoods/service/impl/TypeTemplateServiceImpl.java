@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,7 @@ import com.xuxx.mall.sellergoods.service.TypeTemplateService;
 @Transactional
 @Service(interfaceClass = TypeTemplateService.class, timeout = 10000)
 public class TypeTemplateServiceImpl implements TypeTemplateService {
+	private static final Logger log = Logger.getLogger(TypeTemplateServiceImpl.class);
 
 	@Autowired
 	private TbTypeTemplateMapper typeTemplateMapper;
@@ -136,7 +138,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 	 * @Description: 将品牌列表与规格列表放入缓存, 以模板 id 为key
 	 */
 	private void saveToRedis() {
-		System.out.println("缓存品牌列表和规格列表");
+		log.info("缓存品牌列表和规格列表");
 		List<TbTypeTemplate> templateList = findAll();
 		for (TbTypeTemplate template : templateList) {
 			// 得到品牌列表

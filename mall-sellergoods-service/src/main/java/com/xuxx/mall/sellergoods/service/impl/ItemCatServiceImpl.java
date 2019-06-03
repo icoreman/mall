@@ -3,6 +3,7 @@ package com.xuxx.mall.sellergoods.service.impl;
 import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,7 @@ import com.xuxx.mall.sellergoods.service.ItemCatService;
 @Transactional
 @Service(interfaceClass = ItemCatService.class, timeout = 10000)
 public class ItemCatServiceImpl implements ItemCatService {
+	private static final Logger log = Logger.getLogger(ItemCatServiceImpl.class);
 
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
@@ -114,7 +116,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		criteria.andParentIdEqualTo(parentId);
 
 		// 将模板ID放入缓存（以商品分类名称作为key）
-		System.out.println("缓存商品分类");
+		log.info("缓存商品分类");
 		List<TbItemCat> itemCatList = findAll();
 		for (TbItemCat itemCat : itemCatList) {
 			redisTemplate.boundHashOps("itemCat").put(itemCat.getName(), itemCat.getTypeId());

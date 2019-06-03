@@ -26,7 +26,7 @@ import com.xuxx.mall.pojo.TbItemExample.Criteria;
  *
  */
 @Component
-public class SolrUtil {
+public class SolrUtil {	
 	@Autowired
 	private TbItemMapper itemMapper;
 

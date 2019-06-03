@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,7 @@ import util.IdWorker;
 @Service
 @Transactional
 public class SeckillOrderServiceImpl implements SeckillOrderService {
+	private static final Logger log = Logger.getLogger(SeckillOrderServiceImpl.class);
 
 	@Autowired
 	private TbSeckillOrderMapper seckillOrderMapper;
@@ -46,7 +48,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 
 	@Autowired
 	private IdWorker idWorker;
-	
+
 	/**
 	 * 查询全部
 	 */
@@ -136,7 +138,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 		Page<TbSeckillOrder> page = (Page<TbSeckillOrder>) seckillOrderMapper.selectByExample(example);
 		return new PageResult<TbSeckillOrder>(page.getTotal(), page.getResult());
 	}
-	
+
 	@Override
 	public void submitOrder(Long seckillId, String userId) {
 		// 1.查询缓存中的商品
@@ -154,7 +156,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 		if (seckillGoods.getStockCount() == 0) {
 			seckillGoodsMapper.updateByPrimaryKey(seckillGoods); // 更新数据库
 			redisTemplate.boundHashOps("seckillGoods").delete(seckillId);
-			System.out.println("商品同步到数据库...");
+			log.info("商品同步到数据库...");
 		}
 
 		// 3.存储秒杀订单 (不向数据库存 ,只向缓存中存储 )
@@ -168,7 +170,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 		seckillOrder.setStatus("0");// 状态
 
 		redisTemplate.boundHashOps("seckillOrder").put(userId, seckillOrder);
-		System.out.println("保存订单成功(redis)");
+		log.info("保存订单成功(redis)");
 	}
 
 	@Override
@@ -221,7 +223,7 @@ public class SeckillOrderServiceImpl implements SeckillOrderService {
 				redisTemplate.boundHashOps("seckillGoods").put(seckillOrder.getSeckillId(), seckillGoods);
 			}
 
-			System.out.println("订单取消：" + orderId);
+			log.info("订单取消：" + orderId);
 		}
 	}
 }

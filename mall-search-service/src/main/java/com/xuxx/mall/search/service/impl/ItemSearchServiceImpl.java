@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
@@ -42,7 +43,8 @@ import com.xuxx.mall.search.service.ItemSearchService;
 @SuppressWarnings(value = { "rawtypes", "unchecked" })
 @Service(timeout = 10000)
 public class ItemSearchServiceImpl implements ItemSearchService {
-
+	private static final Logger log = Logger.getLogger(ItemSearchServiceImpl.class);
+	
 	@Autowired
 	private SolrTemplate solrTemplate;
 
@@ -237,12 +239,12 @@ public class ItemSearchServiceImpl implements ItemSearchService {
 				throw new RuntimeException("redis 中品牌列表为空，请运行运营商管理后台，缓存品牌列表");
 			}
 			map.put("brandList", brandList);
-			System.out.println("品牌列表条数：" + brandList.size());
+			log.info("品牌列表条数：" + brandList.size());
 
 			// 3.根据模板ID获取规格列表
 			List specList = (List) redisTemplate.boundHashOps("specList").get(templateId);
 			map.put("specList", specList);
-			System.out.println("规格列表条数：" + specList.size());
+			log.info("规格列表条数：" + specList.size());
 		}
 
 		return map;

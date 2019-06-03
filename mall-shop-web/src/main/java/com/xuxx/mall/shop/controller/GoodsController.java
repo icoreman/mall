@@ -138,16 +138,16 @@ public class GoodsController {
 
 		return goodsService.findPage(goods, page, rows);
 	}
-	
+
 	@RequestMapping("/updateMarketableStatus")
-	public Result updateMarketableStatus(Long[] ids, String status){
+	public Result updateMarketableStatus(Long[] ids, String status) {
 		try {
 			goodsService.updateMarketableStatus(ids, status);
 			return Result.buildSuccessResult("操作成功");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Result.buildFailResult("操作失败");
-		}		
+		}
 	}
 
 }
