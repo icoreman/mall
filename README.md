@@ -16,7 +16,7 @@ a B2B2C mall system.
 6、 可以依次打包，放入容器中运行，或者依次运行命令 `tomcat7:run` 运行，因为有 tomcat 插件。
 
 ## 如何建立集群
-- [ ] 还没写  
+[简易教程](https://github.com/icoreman/mall/blob/master/src/cluster.md)
 
 ### 运营商管理后台：
 - 对商家的审核、管理。
@@ -67,4 +67,4 @@ a B2B2C mall system.
  
  
 - [x] [如何单机运行此项目](如何单机运行此项目)
-- [x] 分布式集群部署 
+- [x] [分布式集群部署](https://github.com/icoreman/mall/blob/master/src/cluster.md)
