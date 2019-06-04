@@ -36,7 +36,7 @@ server.3=zoo3:2888:3888
 - ## [redis 集群](http://www.redis.cn/topics/cluster-tutorial.html)
 上面链接为中文例子。  
 以下为简易步骤：  
-> 1、下载，解压，安装，需要先安装c/c++、ruby等环境环境。
+> 1、下载，解压，安装，需要先安装c/c++、ruby等环境。  
 2、进入 src 目录，运行 make install PREFIX=/usr/local/redis-cluster/redis-1，依次建6个。  
 3、拷贝 redis.conf 到各个实例的 bin 目录下。  
 4、修改配置, 因为是单机版，port 端口不能一样，这里设置为 7000-7005，cluster-enabled 设置为 yes，开启集群模式，设置绑定的ip。默认是127.0.0.1，如果不修改，后面建集群的时候只能通过这个ip访问，如果你是放在虚拟机上运行，记得修改。  
@@ -60,21 +60,21 @@ Tips：
 **需要依赖 zookeeper 集群。**
 [下载地址](http://mirror.bit.edu.cn/apache/lucene/solr/)
 
-1、 先下载，解压。  
+> 1、 先下载，解压。  
 2、 在 server/solr/ 目录下添加一个 core，比如“my_core”，拷贝 server/solr/configsets/basic_configs 里的 conf 到 server/solr/my_core，
 在 my_core 目录下 添加 data目录。  
 3、复制4个 solr 实例。  
-4、分别修改端口、zookeeper集群的地址。  
-改 solr.in.sh 文件 (windows 为 solr.in.cmd 文件)  
+4、分别修改端口、zookeeper集群的地址。  改 solr.in.sh 文件 (windows 为 solr.in.cmd 文件) 
+```
 RMI_PORT=18983           -- 默认的SOLR_PORT+10000  
 SOLR_PORT=8983           -- 默认的为8983  
 ZK_HOST=                 -- 你的zookeeper集群地址  
 SOLR_HOME                -- home 地址,可以不修改，默认为 server/solr  
+```
 
-5、这里使用默认的 solr_home,所以配置文件放在 server/solr下，要把这些配置文件上传到 zookeeper管理。进入 server/scripts/cloud-scripts，里面有个 zkcli.sh。  
-./zkcli.sh -zkhost '你的 zookeeper 集群地址' -cmd upconfig -confdir '你 core 的 conf 目录，任意一个 solr 实例都可以，因为都一样的' -confname '给这个配置取个名'。
-
-6、分别启动  
+> 5、这里使用默认的 solr_home,所以配置文件放在 server/solr下，要把这些配置文件上传到 zookeeper管理。进入 server/scripts/cloud-scripts，里面有个 zkcli.sh。  
+> ./zkcli.sh -zkhost '你的 zookeeper 集群地址' -cmd upconfig -confdir '你 core 的 conf 目录，任意一个 solr 实例都可以，因为都一样的' -confname '给这个配置取个名'。  
+> 6、分别启动  
 `./solr start -cloud`
 
 注意：  
