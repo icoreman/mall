@@ -11,9 +11,9 @@ a B2B2C mall system.
 1、 clone 项目。  
 2、 安装相关中间件([极简易教程](https://www.jianshu.com/p/6309efb2a821))：redis、zookeeper、solr、fastfds、cas、activemq等。运行 `mall-parent/src/mall.sql` 建库。  
 3、 在 `mall-common/src/main/resources` 项目中配置相关中间件的参数，配置 `mall-dao/src/main/resources/properties/db.peroperties` 中的数据库相关参数。  
-4、 将 `mall-parent/src/fastdfs` 下的 jar 包放到本地的 maven 仓库或者私人仓库中，注意路径。
-5、 进入 `mall-parent`，运行 `mvn clean install`。
-6、 可以依次打包，放入容器中运行，或者依次运行命令 `tomcat7:run` 运行，因为有 tomcat 插件。
+4、 将 `mall-parent/src/fastdfs` 下的 jar 包放到本地的 maven 仓库或者私人仓库中，注意路径。  
+5、 进入 `mall-parent`，运行 `mvn clean install`。  
+6、 可以依次打包，放入容器中运行，或者依次运行命令 `tomcat7:run` 运行，因为有 tomcat 插件。  
 
 ## 如何建立集群
 [简易教程](https://github.com/icoreman/mall/blob/master/src/cluster.md)
@@ -48,8 +48,6 @@ a B2B2C mall system.
 ### 登录中心
 单点登录， cas，目前配置的数据源为 mysql。 
 
-- [ ] 将源配置为 redis，把用户账号密码缓存至 redis 中，提高登录速度。
-
 ### 购物车
 功能做得很简单，是一个”瘦“购物车，添加商品、结算。未登录时，将购车信息存储至 cookie 中，登录后，合并 cookie 与 redis 缓存中的商品信息。
 
@@ -60,11 +58,14 @@ a B2B2C mall system.
 
 ### 秒杀
 一个很简单的秒杀方案，就是靠缓存。把秒杀数据缓存到 redis 中，使用任务调度检查秒杀超时，下架秒杀商品。 
-- [ ] 完善秒杀方案。
 
 
 由于支付、短信服务申请都很麻烦，以个人身份申请很难，所以，就没有做。 
  
- 
-- [x] [如何单机运行此项目](如何单机运行此项目)
+- [ ] 完善秒杀方案。
+- [ ] 将源配置为 redis，把用户账号密码缓存至 redis 中，提高登录速度。
+- [ ] 日志管理，ELK 工具。  
+- [ ] docker。  
+- [ ] Jenkins 继续集成工具  
+- [x] [如何单机运行此项目](如何单机运行此项目)。  
 - [x] [分布式集群部署](https://github.com/icoreman/mall/blob/master/src/cluster.md)
