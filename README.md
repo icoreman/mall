@@ -1,5 +1,7 @@
 # mall
-a B2B2C mall system.
+a B2B2C mall system develop with dubbo.
+
+[Spring cloud 版本(开发中)](https://github.com/icoreman/ms-mall-parent)  
 
 ## 整体架构如图：
 
