@@ -61,7 +61,7 @@
 		<freemarker.version>2.3.23</freemarker.version>
 		<jedis.version>2.8.1</jedis.version>
 		<spring-data-redis.version>1.7.2.RELEASE</spring-data-redis.version>
-		<spring-securty.version>4.1.0.RELEASE</spring-securty.version>
+		<spring-securty.version>5.2.10.RELEASE</spring-securty.version>
 		<activemq.version>5.13.4</activemq.version>
 		<security.version>3.2.3.RELEASE</security.version>
 		<solrj.version>4.10.3</solrj.version>
